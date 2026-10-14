@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Hari Charan | Computer Science Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;700;800&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);
+  --bg:#f4f7fb;--surface:#ffffff;--ink:#12203a;--muted:#55617a;--line:#d8e0ec;
+  --c1:#0f8b8d;--c2:#e4572e;--c3:#6a4c93;--c4:#e0a100;--accent:#0f8b8d;--node:#9aa6bb;
+  --head:"Bricolage Grotesque","Trebuchet MS",sans-serif;--body:"Instrument Sans","Segoe UI",system-ui,sans-serif;
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){--bg:#0e1628;--surface:#16213a;--ink:#e8eef9;--muted:#a3afc7;--line:#26335200;--line:#2a3856;--c1:#3cc4c6;--c2:#ff7f57;--c3:#a78bd6;--c4:#f2c14e;--accent:#3cc4c6;--node:#6f7d98}
+}
+:root[data-theme="dark"]{--bg:#0e1628;--surface:#16213a;--ink:#e8eef9;--muted:#a3afc7;--line:#2a3856;--c1:#3cc4c6;--c2:#ff7f57;--c3:#a78bd6;--c4:#f2c14e;--accent:#3cc4c6;--node:#6f7d98}
+*,*::before,*::after{box-sizing:inherit}
+html{height:auto;scroll-behavior:smooth;scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--body);font-size:17px;line-height:1.65}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--c2);outline-offset:3px;border-radius:4px}
+.wrap{max-width:1080px;margin:0 auto;padding:0 24px}
+header.nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:10;background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+.nav .wrap{display:flex;align-items:center;justify-content:space-between;height:60px}
+.logo{font-family:var(--head);font-weight:800;font-size:20px;text-decoration:none}
+nav a{margin-left:22px;text-decoration:none;color:var(--muted);font-weight:500;font-size:15px}
+nav a:hover{color:var(--ink)}
+@media(max-width:640px){nav a:nth-child(n+4){display:none}nav a{margin-left:14px}}
+.hero{padding:56px 0 40px}
+.hero .wrap{display:grid;grid-template-columns:1.05fr 1fr;gap:40px;align-items:center}
+@media(max-width:860px){.hero .wrap{grid-template-columns:1fr}}
+h1{font-family:var(--head);font-weight:800;font-size:clamp(44px,7vw,76px);line-height:1;margin:0 0 18px;letter-spacing:-.02em}
+.role{font-family:var(--head);font-weight:500;font-size:clamp(18px,2.4vw,24px);color:var(--accent);margin:0 0 18px}
+.lede{color:var(--muted);max-width:52ch;margin:0 0 28px}
+.btns{display:flex;gap:12px;flex-wrap:wrap}
+.btn{display:inline-block;padding:12px 22px;border-radius:10px;font-weight:600;text-decoration:none;border:2px solid var(--ink);cursor:pointer;font:inherit;font-weight:600;background:transparent;color:var(--ink)}
+.btn.primary{background:var(--ink);color:var(--bg)}
+.btn:hover{transform:translateY(-2px)}
+.graph{background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:14px}
+canvas{width:100%;height:340px;display:block;border-radius:12px;touch-action:manipulation}
+.gbar{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;padding:10px 4px 2px;font-size:14px;color:var(--muted)}
+.gbar b{color:var(--ink);font-family:var(--head);font-size:18px}
+.gbar button{font:inherit;font-size:14px;font-weight:600;padding:8px 14px;border-radius:8px;border:1.5px solid var(--ink);background:var(--ink);color:var(--bg);cursor:pointer}
+.gbar button.ghost{background:transparent;color:var(--ink)}
+section{padding:64px 0;border-top:1px solid var(--line)}
+h2{font-family:var(--head);font-weight:700;font-size:clamp(28px,4vw,40px);margin:0 0 28px;letter-spacing:-.01em}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:40px}
+@media(max-width:780px){.two{grid-template-columns:1fr}}
+p{margin:0 0 14px;max-width:62ch}
+.project{background:var(--surface);border:1px solid var(--line);border-left:6px solid var(--c1);border-radius:14px;padding:28px}
+.project h3{font-family:var(--head);font-size:26px;margin:0 0 6px}
+.project ul{margin:16px 0 0;padding-left:20px}
+.project li{margin-bottom:8px}
+.tag{display:inline-block;font-size:14px;color:var(--muted);margin-bottom:10px}
+.skills{display:flex;gap:16px;flex-wrap:wrap}
+.skill{flex:1 1 150px;background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:22px}
+.skill strong{font-family:var(--head);font-size:34px;display:block}
+.skill:nth-child(1) strong{color:var(--c1)}.skill:nth-child(2) strong{color:var(--c2)}.skill:nth-child(3) strong{color:var(--c3)}
+.skill span{color:var(--muted);font-size:15px}
+.chips{display:flex;flex-wrap:wrap;gap:10px;padding:0;margin:0;list-style:none}
+.chips li{padding:9px 16px;border-radius:999px;background:var(--surface);border:1px solid var(--line);font-weight:500;font-size:15px}
+.edu{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:24px;max-width:640px}
+.edu h3{font-family:var(--head);margin:0 0 4px;font-size:22px}
+.edu p{color:var(--muted);margin:0}
+footer{padding:56px 0 64px;border-top:1px solid var(--line)}
+footer h2{margin-bottom:14px}
+footer small{display:block;margin-top:34px;color:var(--muted)}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.btn:hover{transform:none}}
+</style>
+</head>
+<body>
+<header class="nav"><div class="wrap">
+  <a class="logo" href="#top">Hari Charan</a>
+  <nav aria-label="Sections"><a href="#about">About</a><a href="#project">Project</a><a href="#skills">Skills</a><a href="#interests">Interests</a><a href="#education">Education</a><a href="#contact">Contact</a></nav>
+</div></header>
+
+<main id="top">
+<section class="hero" style="border-top:0;padding-top:56px">
+  <div class="wrap">
+    <div>
+      <h1>Hari Charan</h1>
+      <p class="role">Computer Science student who likes graphs, algorithms and clean code</p>
+      <p class="lede">I'm a second-year B.E. student at Saveetha School of Engineering in Chennai, looking for an internship where I can build real software and sharpen my technical skills.</p>
+      <div class="btns"><a class="btn primary" href="#project">See my project</a><a class="btn" href="#contact">Get in touch</a></div>
+    </div>
+    <div class="graph">
+      <canvas id="g" aria-label="Interactive social network graph. Press Find communities to watch groups form."></canvas>
+      <div class="gbar">
+        <span>Communities found: <b id="count">44</b></span>
+        <span><button id="run">Find communities</button> <button id="reset" class="ghost">New network</button></span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="about"><div class="wrap two">
+  <div><h2>About me</h2></div>
+  <div>
+    <p>I'm a motivated second-year Computer Science and Engineering student. I want to apply what I know about programming, learn from working engineers, and contribute to real software projects.</p>
+    <p>I enjoy problems that need careful, logical thinking, especially the ones where data is connected, like networks of people.</p>
+  </div>
+</div></section>
+
+<section id="project"><div class="wrap">
+  <h2>Project</h2>
+  <article class="project">
+    <span class="tag">Academic project, in progress</span>
+    <h3>Social Network Community Detection</h3>
+    <p>A software application that finds communities inside a social network. The graph on this page is a small demo of the idea: each person starts alone, then joins the group most of their friends belong to.</p>
+    <ul>
+      <li>Uses graph concepts and algorithms to identify communities.</li>
+      <li>Applies graph traversal and clustering to analyse relationships between users.</li>
+      <li>Presents network and community information in an interactive interface.</li>
+    </ul>
+  </article>
+</div></section>
+
+<section id="skills"><div class="wrap">
+  <h2>Technical skills</h2>
+  <div class="skills">
+    <div class="skill"><strong>C</strong><span>Programming fundamentals</span></div>
+    <div class="skill"><strong>C++</strong><span>Object-oriented programming</span></div>
+    <div class="skill"><strong>Java</strong><span>Object-oriented programming</span></div>
+  </div>
+</div></section>
+
+<section id="interests"><div class="wrap two">
+  <div>
+    <h2>Areas of interest</h2>
+    <ul class="chips"><li>Data structures and algorithms</li><li>Object-oriented programming</li><li>Graph algorithms</li><li>Software development</li><li>Database and web applications</li></ul>
+  </div>
+  <div>
+    <h2>Strengths</h2>
+    <ul class="chips"><li>Quick learner</li><li>Problem solving</li><li>Logical thinking</li><li>Team collaboration</li><li>Eager to learn new technologies</li></ul>
+  </div>
+</div></section>
+
+<section id="education"><div class="wrap">
+  <h2>Education</h2>
+  <div class="edu">
+    <h3>B.E. Computer Science and Engineering</h3>
+    <p>Saveetha School of Engineering, Chennai. Currently in 2nd year.</p>
+  </div>
+</div></section>
+</main>
+
+<footer id="contact"><div class="wrap">
+  <h2>Let's talk</h2>
+  <p>I'm looking for an internship in software development. Based in Chennai, Tamil Nadu.</p>
+  <!-- Add your details here, e.g. <a class="btn primary" href="mailto:you@example.com">Email me</a> <a class="btn" href="https://github.com/yourname">GitHub</a> -->
+  <small>&copy; 2026 Hari Charan</small>
+</div></footer>
+
+<script>
+(function(){
+  var cv=document.getElementById('g'),ctx=cv.getContext('2d'),W=0,H=0,dpr=window.devicePixelRatio||1;
+  var N=44,K=4,nodes=[],edges=[],adj=[],step=0,timer=null,hover=-1,alpha=1;
+  var reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  function css(v){return getComputedStyle(document.documentElement).getPropertyValue(v).trim()}
+  function resize(){var r=cv.getBoundingClientRect();W=r.width;H=r.height;cv.width=W*dpr;cv.height=H*dpr;ctx.setTransform(dpr,0,0,dpr,0,0)}
+  function build(){
+    clearInterval(timer);timer=null;step=0;alpha=1;nodes=[];edges=[];adj=[];
+    for(var i=0;i<N;i++){nodes.push({x:W/2+(Math.random()-.5)*W*.6,y:H/2+(Math.random()-.5)*H*.6,vx:0,vy:0,g:i%K,l:i});adj.push([])}
+    for(var a=0;a<N;a++)for(var b=a+1;b<N;b++){
+      var p=nodes[a].g===nodes[b].g?.4:.015;
+      if(Math.random()<p){edges.push([a,b]);adj[a].push(b);adj[b].push(a)}
+    }
+    for(var j=0;j<N;j++)if(!adj[j].length){var o=(j+K)%N;edges.push([j,o]);adj[j].push(o);adj[o].push(j)}
+    update();
+  }
+  function palette(){return [css('--c1'),css('--c2'),css('--c3'),css('--c4'),'#2a9d5c','#d1478f','#3a7bd5','#8a6d3b']}
+  function update(){
+    var s={};nodes.forEach(function(n){s[n.l]=1});
+    document.getElementById('count').textContent=Object.keys(s).length;
+  }
+  function propagate(){
+    var order=nodes.map(function(_,i){return i}).sort(function(){return Math.random()-.5}),changed=false;
+    order.forEach(function(i){
+      var c={},best=nodes[i].l,bc=0;
+      adj[i].forEach(function(k){var l=nodes[k].l;c[l]=(c[l]||0)+1});
+      var keys=Object.keys(c);
+      keys.forEach(function(l){if(c[l]>bc||(c[l]===bc&&Math.random()<.5)){bc=c[l];best=+l}});
+      if(c[nodes[i].l]!==undefined&&c[nodes[i].l]===bc)best=nodes[i].l;
+      if(best!==nodes[i].l){nodes[i].l=best;changed=true}
+    });
+    step++;update();
+    if(!changed){clearInterval(timer);timer=null}
+  }
+  function run(){
+    if(timer)return;
+    if(reduce){for(var i=0;i<30;i++)propagate();return}
+    timer=setInterval(propagate,650);propagate();
+  }
+  function physics(){
+    var i,j,a,b,dx,dy,d,f;
+    for(i=0;i<N;i++){a=nodes[i];
+      for(j=i+1;j<N;j++){b=nodes[j];dx=a.x-b.x;dy=a.y-b.y;d=Math.sqrt(dx*dx+dy*dy)+.1;
+        if(d<140){f=(900/(d*d))*alpha;a.vx+=dx/d*f;a.vy+=dy/d*f;b.vx-=dx/d*f;b.vy-=dy/d*f}}
+      a.vx+=(W/2-a.x)*.002*alpha;a.vy+=(H/2-a.y)*.002*alpha;
+    }
+    edges.forEach(function(e){a=nodes[e[0]];b=nodes[e[1]];dx=b.x-a.x;dy=b.y-a.y;d=Math.sqrt(dx*dx+dy*dy)+.1;
+      f=(d-38)*.012*alpha;a.vx+=dx/d*f;a.vy+=dy/d*f;b.vx-=dx/d*f;b.vy-=dy/d*f});
+    nodes.forEach(function(n){n.vx*=.8;n.vy*=.8;n.x+=n.vx;n.y+=n.vy;
+      n.x=Math.max(12,Math.min(W-12,n.x));n.y=Math.max(12,Math.min(H-12,n.y))});
+    if(alpha>.05)alpha*=.994;
+  }
+  function draw(){
+    physics();ctx.clearRect(0,0,W,H);
+    var pal=palette(),labels={},li=0,colored=step>0;
+    nodes.forEach(function(n){if(labels[n.l]===undefined)labels[n.l]=li++});
+    var line=css('--line'),node=css('--node');
+    edges.forEach(function(e){var a=nodes[e[0]],b=nodes[e[1]];
+      var hl=hover>=0&&(e[0]===hover||e[1]===hover);
+      ctx.strokeStyle=hl?css('--ink'):line;ctx.lineWidth=hl?1.6:1;
+      ctx.beginPath();ctx.moveTo(a.x,a.y);ctx.lineTo(b.x,b.y);ctx.stroke()});
+    nodes.forEach(function(n,i){
+      ctx.fillStyle=colored?pal[labels[n.l]%pal.length]:node;
+      ctx.beginPath();ctx.arc(n.x,n.y,i===hover?9:6.5,0,7);ctx.fill();
+    });
+    requestAnimationFrame(draw);
+  }
+  cv.addEventListener('pointermove',function(ev){
+    var r=cv.getBoundingClientRect(),x=ev.clientX-r.left,y=ev.clientY-r.top;hover=-1;
+    nodes.forEach(function(n,i){if(Math.hypot(n.x-x,n.y-y)<12)hover=i});
+  });
+  cv.addEventListener('pointerleave',function(){hover=-1});
+  document.getElementById('run').addEventListener('click',run);
+  document.getElementById('reset').addEventListener('click',build);
+  window.addEventListener('resize',function(){resize()});
+  resize();build();draw();
+})();
+</script>
+</body>
+</html>
